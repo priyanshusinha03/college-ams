@@ -1,23 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function Login({ login }) {
-  const [userType, setUserType] = useState('faculty');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [registrationNumber, setRegistrationNumber] = useState('');
+function Login({ login, dataDemo }) {
+  const [userType, setUserType] = useState("faculty");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [registrationNumber, setRegistrationNumber] = useState("");
+  const history = useHistory();
 
   const handleLogin = () => {
-    if (userType === 'faculty') {
-      if (username === 'faculty' && password === 'password') {
-        login(username, password);
+    if (userType === "faculty") {
+      if (username === "faculty" && password === "password") {
+        if (login) {
+          login(username, password);
+        } else {
+          alert("Faculty login function is not defined.");
+        }
       } else {
-        alert('Invalid faculty credentials');
+        alert("Invalid faculty credentials");
       }
-    } else if (userType === 'student') {
+    } else if (userType === "student") {
       alert(`Student Login: Registration Number - ${registrationNumber}`);
     }
   };
-
+  
+  const handleLoginStudent = () => {
+  console.log("d",dataDemo)
+    // Check if the registration number exists in the data array
+    const studentData = dataDemo.find((student) => student.registrationNumber === registrationNumber);
+    
+    if (studentData) {
+      // If a match is found, redirect to the StudentData page with the data
+      history.push("/student-data", { studentData });
+    } else {
+      alert("Invalid registration number");
+    }
+  };
   return (
     <div className="container mt-5">
       <div className="row justify-content-center mt-5">
@@ -31,7 +49,7 @@ function Login({ login }) {
             <option value="faculty">Faculty</option>
             <option value="student">Student</option>
           </select>
-          {userType === 'faculty' ? (
+          {userType === "faculty" ? (
             <>
               <input
                 type="text"
@@ -59,8 +77,11 @@ function Login({ login }) {
               />
             </>
           )}
-          <button className="btn btn-primary w-100" onClick={handleLogin}>
-            {userType === 'student' ? 'Search' : 'Login'}
+          <button
+            className="btn btn-primary w-100"
+            onClick={userType === "student" ? handleLoginStudent : handleLogin}
+          >
+            {userType === "student" ? "Search" : "Login"}
           </button>
         </div>
       </div>

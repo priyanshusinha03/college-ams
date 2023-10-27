@@ -1,0 +1,10 @@
+firstName,lastName,branch,status,registrationNumber,email,attendance
+John,Doe,Hispanic,FTGRAD,12345,jdoe@example.com,17.9
+Jane,Smith,Hispanic,TRANSFER,23456,jsmith@example.com,18.1
+Sarah,Thomas,Hispanic,FTFT,34567,sthomas@example.com,17.6
+Frank,Brown,Race/ethnicity unknown,FTFT,45678,fbrown@example.com,19
+Mike,Davis,White,FTFT,56789,mdavis@example.com,18.2
+Jennifer,Wilson,Asian,TRANSFER,67890,jwilson@example.com,18.5
+Jessica,Garcia,White,FTFT,78901,jgarcia@example.com,18.8
+Fred,Clark,Hispanic,FTGRAD,89012,fclark@example.com,19.2
+Bob,Lopez,White,FTFT,90123,blopez@example.com,18.5
